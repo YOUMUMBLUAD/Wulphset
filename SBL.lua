@@ -36,9 +36,11 @@ local X = Material.Load({
       local Debris = game:GetService("Debris")
     
       --// Removing Anti-Cheat
+      pcall(function()
       getPlayer.Character.Punchonwall.Parent = game:GetService("Players")
         wait(2)
       Debris:AddItem(game:GetService("Players").Punchonwall, 1)
+      end)
     
 
       --// Making Hitbox bigger
