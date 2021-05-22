@@ -26,8 +26,8 @@ local X = Material.Load({
  
     --// Declarations
     local getPlayer = game:GetService("Players").LocalPlayer;
-    local getBlade = getPlayer.Character.Sword.Blade
-    local getPlayerBlade = getPlayer.Backpack.sumbagay.RemoteEvent
+    local getBlade = getPlayer.Character.Sword.Blade;
+    local getPlayerBlade = getPlayer.Backpack.sumbagay.RemoteEvent;
 
 
     do --// Do blocks winning always
