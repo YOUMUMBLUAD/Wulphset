@@ -44,7 +44,7 @@ local X = Material.Load({
       --// Making Hitbox bigger
       for _,v in pairs(workspace:GetDescendants()) do 
         if (v ~= game:GetService("Players").LocalPlayer.Character and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid")) then --// Removing players from the expansion
-          v.HumanoidRootPart.Size = Vector3.new(20,15,20)
+          v.HumanoidRootPart.Size = Vector3.new(20,10,20)
           v.HumanoidRootPart.CanCollide = false
           v.HumanoidRootPart.Transparency = 0.9
         end;
@@ -59,9 +59,9 @@ local X = Material.Load({
         local getChild = game:GetService("Workspace"):GetChildren()
         for i = 1,#getChild do local v = getChild[i]
           if (v:FindFirstChild("Reward") and v.Humanoid.Health > 0) then 
-                        
+
             pcall(function() repeat 
-                getPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,5,2.5) * CFrame.Angles(math.rad(-50),0,0)
+                getPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,6,5) * CFrame.Angles(math.rad(-45),0,0)
                   getPlayerBlade:FireServer("AGDSGSDG", 1, getBlade) wait()
                 until (v.Humanoid.Health <= 0 or not autoFarm) 
               end);
