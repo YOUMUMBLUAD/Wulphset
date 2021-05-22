@@ -59,9 +59,8 @@ local X = Material.Load({
         local getChild = game:GetService("Workspace"):GetChildren()
         for i = 1,#getChild do local v = getChild[i]
           if (v:FindFirstChild("Reward") and v.Humanoid.Health > 0) then 
-            pcall(function() 
-
-                repeat 
+                        
+            pcall(function() repeat 
                 getPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,5,2.5) * CFrame.Angles(math.rad(-50),0,0)
                   getPlayerBlade:FireServer("AGDSGSDG", 1, getBlade) wait()
                 until (v.Humanoid.Health <= 0 or not autoFarm) 
