@@ -20,14 +20,26 @@ local X = Material.Load({
       autoFarm = State
     end, Enabled = false})
 
-    local A = V.Button({Text = "Created by Invell", Callback = function()
+    local B = V.Button({Text = "Created by Invell", Callback = function()
       warn("Who is Candice?")
+    end})
+
+    local C = V.Button({Text = "(Click for Discord Link)", Callback = function()
+      setclipboard("https://discord.gg/7wuQt9SeHe")
+      wait(1)
+      X.Banner({Text = "Discord Link Copied to Clipboard"})
     end})
  
     --// Declarations
     local getPlayer = game:GetService("Players").LocalPlayer;
     local getBlade = getPlayer.Character.Sword.Blade;
     local getPlayerBlade = getPlayer.Backpack.sumbagay.RemoteEvent
+
+    --// Creating Tween Function
+    local function TweenTo(Time, Targ)
+      local TweenService = game:GetService("TweenService");
+      PlayTween = TweenService:Create(getPlayer.Character.HumanoidRootPart, TweenInfo.new(Time, Enum.EasingStyle.Linear),  {CFrame = Targ}):Play()
+    end
 
     do --// Do blocks winning always
 
@@ -40,12 +52,6 @@ local X = Material.Load({
         wait(2)
       Debris:AddItem(game:GetService("Players").Punchonwall, 1)
       end)
-      
-          --// Creating Tween Function
-      local function TweenTo(Time, Targ)
-        local TweenService = game:GetService("TweenService");
-        PlayTween = TweenService:Create(getPlayer.Character.HumanoidRootPart, TweenInfo.new(Time, Enum.EasingStyle.Linear),  {CFrame = Targ}):Play()
-      end
     
     end;
     --// Main Script
@@ -58,7 +64,7 @@ local X = Material.Load({
           if (v:FindFirstChild("Reward") and v.Humanoid.Health > 0) then 
 
             pcall(function() repeat wait()
-              getPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,0,math.random(4, 12))
+              getPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,0,math.random(2, 12))
                 getPlayerBlade:FireServer("AGDSGSDG", 3, getBlade)
               until (v.Humanoid.Health <= 0 or not autoFarm) 
             end);
