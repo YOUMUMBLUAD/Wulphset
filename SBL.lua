@@ -29,12 +29,6 @@ local X = Material.Load({
     local getBlade = getPlayer.Character.Sword.Blade;
     local getPlayerBlade = getPlayer.Backpack.sumbagay.RemoteEvent
 
-    --// Creating Tween Function
-    local function TweenTo(Time, Targ)
-      local TweenService = game:GetService("TweenService");
-      PlayTween = TweenService:Create(getPlayer.Character.HumanoidRootPart, TweenInfo.new(Time, Enum.EasingStyle.Linear),  {CFrame = Targ}):Play()
-    end
-
     do --// Do blocks winning always
 
       --// Debris > Destroy() 
@@ -46,6 +40,12 @@ local X = Material.Load({
         wait(2)
       Debris:AddItem(game:GetService("Players").Punchonwall, 1)
       end)
+      
+          --// Creating Tween Function
+      local function TweenTo(Time, Targ)
+        local TweenService = game:GetService("TweenService");
+        PlayTween = TweenService:Create(getPlayer.Character.HumanoidRootPart, TweenInfo.new(Time, Enum.EasingStyle.Linear),  {CFrame = Targ}):Play()
+      end
     
     end;
     --// Main Script
