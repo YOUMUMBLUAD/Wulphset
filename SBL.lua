@@ -27,8 +27,13 @@ local X = Material.Load({
     --// Declarations
     local getPlayer = game:GetService("Players").LocalPlayer;
     local getBlade = getPlayer.Character.Sword.Blade;
-    local getPlayerBlade = getPlayer.Backpack.sumbagay.RemoteEvent;
+    local getPlayerBlade = getPlayer.Backpack.sumbagay.RemoteEvent
 
+    --// Creating Tween Function
+    local function TweenTo(Time, Targ)
+      local TweenService = game:GetService("TweenService");
+      PlayTween = TweenService:Create(getPlayer.Character.HumanoidRootPart, TweenInfo.new(Time, Enum.EasingStyle.Linear),  {CFrame = Targ}):Play()
+    end
 
     do --// Do blocks winning always
 
@@ -42,16 +47,6 @@ local X = Material.Load({
       Debris:AddItem(game:GetService("Players").Punchonwall, 1)
       end)
     
-
-      --// Making Hitbox bigger
-      for _,v in pairs(workspace:GetDescendants()) do 
-        if (v ~= game:GetService("Players").LocalPlayer.Character and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid")) then --// Removing players from the expansion
-          v.HumanoidRootPart.Size = Vector3.new(20,10,20)
-          v.HumanoidRootPart.CanCollide = false
-          v.HumanoidRootPart.Transparency = 0.9
-        end;
-      end;
-    
     end;
     --// Main Script
     coroutine.wrap(function()
@@ -62,13 +57,13 @@ local X = Material.Load({
         for i = 1,#getChild do local v = getChild[i]
           if (v:FindFirstChild("Reward") and v.Humanoid.Health > 0) then 
 
-            pcall(function() repeat 
-                getPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,7,4) * CFrame.Angles(math.rad(-45),0,0)
-                  getPlayerBlade:FireServer("AGDSGSDG", 1, getBlade) wait()
-                until (v.Humanoid.Health <= 0 or not autoFarm) 
-              end);
+            pcall(function() repeat wait()
+              getPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,0,math.random(4, 12))
+                getPlayerBlade:FireServer("AGDSGSDG", 3, getBlade)
+              until (v.Humanoid.Health <= 0 or not autoFarm) 
+            end);
 
-            end;
+            end; 
           end;
         end;
       end;
