@@ -9,7 +9,7 @@
   local getPlayer = game:GetService("Players").LocalPlayer;
   local getEvent = workspace.EventHolder.Combat_Damage.Reactor;
 
-  do --// Grabbibg Player /Mob tables
+  do --// Grabbibg Player / Mob tables
 
     Mob = {}
     for _,v in pairs(game:GetService("Workspace"):GetChildren()) do
@@ -75,9 +75,11 @@
             getPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,-6,0) * CFrame.Angles(math.rad(90),0,0)
               getEvent:FireServer("Yes");
             pcall(instKill, v)
+                
           if (v.Humanoid.Health <= 0) then 
             getPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0,3000,0)
               end;
+                
             until (v.Humanoid.Health <= 0 or not autoFarm)
         
           end; 
@@ -100,9 +102,11 @@
           repeat wait()
             getPlayer.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame * CFrame.new(0,-6,0) * CFrame.Angles(math.rad(90),0,0)
               getEvent:FireServer("Yes");
+                
           if (v.Character.Humanoid.Health <= 0) then 
             getPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0,3000,0)
               end;
+                
             until (v.Character.Humanoid.Health <= 0 or not autoFarmPlayer)
 
           end;
