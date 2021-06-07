@@ -15,7 +15,6 @@
     for _,v in pairs(game:GetService("Workspace"):GetChildren()) do
       if (v:FindFirstChild("Spawn") and not table.find(Mob, v.Name)) then
         table.insert(Mob, v.Name)
-        return
       end;
     end;
   
@@ -23,7 +22,6 @@
     for _,v in pairs(game:GetService("Players"):GetPlayers()) do
       if (v ~= getPlayer) then
         table.insert(PlayersEnv, v.Name)
-        return
       end;
     end;
   
