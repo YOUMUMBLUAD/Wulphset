@@ -15,6 +15,7 @@
     for _,v in pairs(game:GetService("Workspace"):GetChildren()) do
       if (v:FindFirstChild("Spawn") and not table.find(Mob, v.Name)) then
         table.insert(Mob, v.Name)
+        return
       end;
     end;
   
@@ -22,11 +23,13 @@
     for _,v in pairs(game:GetService("Players"):GetPlayers()) do
       if (v ~= getPlayer) then
         table.insert(PlayersEnv, v.Name)
+        return
       end;
     end;
   
   end;
 
+  --// Insta Kill function (insert after Damage function)
   local function instKill(Value)
     if (Value.Humanoid.Health < Value.Humanoid.MaxHealth) then
       Value.Humanoid.Health = 0
@@ -61,7 +64,7 @@
     messagebox("The Discord invite has been pasted to your clipboard", "Script Notifier", 0)
   end)
 
-  --// Main Script
+  --// Auto-Farm
   coroutine.wrap(function()
     while wait() do
       pcall(function()
@@ -77,16 +80,17 @@
           if (v.Humanoid.Health <= 0) then 
             getPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0,3000,0)
               end;
-
             until (v.Humanoid.Health <= 0 or not autoFarm)
         
           end; 
         end;
 
-      end)
+      end);
     end;
   end)();
 
+
+  --// Kill Players
   coroutine.wrap(function()
     while wait() do
       pcall(function()
@@ -98,11 +102,9 @@
           repeat wait()
             getPlayer.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame * CFrame.new(0,-6,0) * CFrame.Angles(math.rad(90),0,0)
               getEvent:FireServer("Yes");
-
           if (v.Character.Humanoid.Health <= 0) then 
             getPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0,3000,0)
               end;
-              
             until (v.Character.Humanoid.Health <= 0 or not autoFarmPlayer)
 
           end;
