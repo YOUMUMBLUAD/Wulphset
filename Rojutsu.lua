@@ -42,7 +42,7 @@
       autoFarm = getFarm
   end)
 
-  Section:Toggle("Kill Players", function(getFarmPlayer)
+  Section:Toggle("Kill-Target", function(getFarmPlayer)
     autoFarmPlayer = getFarmPlayer
   end)
 
